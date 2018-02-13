@@ -408,7 +408,7 @@ class DepthHighChart extends React.Component {
 		} else {
 			return (
 				<div className="grid-content no-overflow no-padding middle-content">
-					<div className="exchange-bordered" style={{margin: 10}}>
+					<div className="exchange-bordered" style={{margin: 10, border: 0}}>
 						<div className="exchange-content-header">
 							{this.props.noText ? null : <span className="bid-total">{utils.format_number(totalBids, base.get("precision"))} <AssetName name={base.get("symbol")} /></span>}
 							{this.props.noText ? null : <span className="ask-total float-right">{utils.format_number(totalAsks, quote.get("precision"))} <AssetName name={quote.get("symbol")} /></span>}

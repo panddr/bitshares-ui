@@ -134,7 +134,7 @@ div.transfer-input {
           right: 0;
           bottom: 0;
           font-size: 1.3rem;
-          border-radius: 5px;
+          // border-radius: 5px;
       }
   }
 
@@ -183,13 +183,13 @@ div.transfer-input {
     }
 
     &.active {
-        border-radius: 5px 5px 0 0;
+        // border-radius: 5px 5px 0 0;
         box-shadow: none;
         border-bottom: none;
     }
 
     &.active .dropdown {
-        border-bottom: 1px solid rgba(0,0,0,0.2);
+        border-bottom: 1px solid $border-color;
         max-height: 400px;
     }
 
@@ -204,8 +204,10 @@ div.transfer-input {
 
         /* Styles */
         background: #fff;
-        border-radius: 0 0 5px 5px;
-        border: 1px solid rgba(0,0,0,0.2);
+        // border-radius: 0 0 5px 5px;
+        border: 1px solid $border-color;
+        font-size: .9rem;
+        text-transform: uppercase;
         border-top: none;
         border-bottom: none;
         list-style: none;
@@ -322,7 +324,7 @@ form.full-width {
 button.red, button.green, button.blue {
     padding: 10px 0px 10px 0px;
     width: 8rem;
-    border-radius: 5px 5px 5px 5px;
+    // border-radius: 5px 5px 5px 5px;
     color: rgb(242, 242, 242);
 }
 button.red { background-color: rgb(245, 27, 27); }

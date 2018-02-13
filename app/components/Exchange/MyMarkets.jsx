@@ -127,10 +127,10 @@ class MarketGroup extends React.Component {
                 return <th key={header.name} className="clickable" onClick={this._changeSort.bind(this, "name")}><Translate content="exchange.market" /></th>;
 
             case "vol":
-                return <th key={header.name} className="clickable" onClick={this._changeSort.bind(this, "volume")}style={{textAlign: "right"}}><Translate content="exchange.vol_short" /></th>;
+                return <th key={header.name} className="clickable" onClick={this._changeSort.bind(this, "volume")}><Translate content="exchange.vol_short" /></th>;
 
             case "price":
-                return <th key={header.name} style={{textAlign: "right"}}><Translate content="exchange.price" /></th>;
+                return <th key={header.name}><Translate content="exchange.price" /></th>;
 
             case "quoteSupply":
                 return <th key={header.name}><Translate content="exchange.quote_supply" /></th>;
@@ -139,16 +139,16 @@ class MarketGroup extends React.Component {
                 return <th key={header.name}><Translate content="exchange.base_supply" /></th>;
 
             case "change":
-                return <th key={header.name} className="clickable" onClick={this._changeSort.bind(this, "change")} style={{textAlign: "right"}}><Translate content="exchange.change" /></th>;
+                return <th key={header.name} className="clickable" onClick={this._changeSort.bind(this, "change")}><Translate content="exchange.change" /></th>;
 
             case "issuer":
                 return <th key={header.name}><Translate content="explorer.assets.issuer" /></th>;
 
             case "add":
-                return <th key={header.name} style={{textAlign: "right"}}><Translate content="account.perm.confirm_add" /></th>;
+                return <th key={header.name}><Translate content="account.perm.confirm_add" /></th>;
 
             default:
-                return <th key={header.name}></th>;
+                return <th key={header.name} style={{paddingLeft: 3, paddingRight: 0}}></th>;
             }
         });
 
@@ -228,7 +228,7 @@ class MarketGroup extends React.Component {
         return (
             <div style={{paddingRight: 10}}>
                 {open ? (
-                <table className="table table-hover text-right">
+                <table className="table table-hover">
                     <thead>
                         <tr>{headers}</tr>
                     </thead>
@@ -656,7 +656,6 @@ class MyMarkets extends React.Component {
         return (
             <div className={this.props.className} style={this.props.style}>
                 <div
-                    style={this.props.headerStyle}
                     className="grid-block shrink left-orderbook-header bottom-header"
                 >
                     <div ref="myMarkets" className={starClass} onClick={this._changeTab.bind(this, "my-market")}>
@@ -674,10 +673,10 @@ class MyMarkets extends React.Component {
                     </div> ) : null}
 
                 {myMarketTab ?
-                    <div className="grid-block shrink" style={{width: "100%", textAlign: "left", padding: "0.75rem 0.5rem"}}>
+                    <div className="grid-block shrink" style={{width: "100%", textAlign: "left", padding: "10px 20px", alignItems: "center", justifyContent: "space-between"}}>
                         <label className="no-margin">
-                            <input style={{position: "relative", top: 3}} className="no-margin" type="checkbox" checked={this.props.onlyStars} onChange={() => {MarketsActions.toggleStars();}}/>
-                            <span>&nbsp;<Translate content="exchange.show_star_1" /><Icon className="gold-star" name="fi-star"/> <Translate content="exchange.show_star_2" /></span>
+                            <input style={{position: "relative", top: 3, display: "none"}} className="no-margin" type="checkbox" checked={this.props.onlyStars} onChange={() => {MarketsActions.toggleStars();}}/>
+                            <span><Translate content="exchange.show_star_1" /><Icon className="gold-star" name="fi-star"/> <Translate content="exchange.show_star_2" /></span>
                         </label>
                         <div className="float-right" style={{paddingLeft: 20}}>
                         <input
@@ -693,7 +692,7 @@ class MyMarkets extends React.Component {
 
                     </div> :
 
-                    <div style={{width: "100%", textAlign: "left", padding: "0.75rem 0.5rem"}}>
+                    <div style={{width: "100%", textAlign: "left", padding: "0 20px"}}>
                         <table>
                             <tbody>
                                 <tr style={{width: "100%"}}>

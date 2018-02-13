@@ -93,7 +93,7 @@ class MarketRow extends React.Component {
             case "star":
                 let starClass = starred ? "gold-star" : "grey-star";
                 return (
-                    <td onClick={this._onStar.bind(this, quote.get("symbol"), base.get("symbol"))} key={column.index}>
+                    <td onClick={this._onStar.bind(this, quote.get("symbol"), base.get("symbol"))} key={column.index} style={{paddingLeft: 3, paddingRight: 0}}>
                         <Icon className={starClass} name="fi-star"/>
                     </td>
                 );
@@ -101,7 +101,7 @@ class MarketRow extends React.Component {
             case "vol":
                 let amount = stats ? stats.volumeBase : 0;
                 return (
-                    <td onClick={this._onClick.bind(this, marketID)} className="text-right" key={column.index}>
+                    <td onClick={this._onClick.bind(this, marketID)} key={column.index}>
                         {utils.format_volume(amount)}
                     </td>
                 );
@@ -111,7 +111,7 @@ class MarketRow extends React.Component {
                 let changeClass = change === "0.00" ? "" : change > 0 ? "change-up" : "change-down";
 
                 return (
-                    <td onClick={this._onClick.bind(this, marketID)} className={"text-right " + changeClass} key={column.index}>
+                    <td onClick={this._onClick.bind(this, marketID)} key={column.index}>
                         {change + "%"}
                     </td>
                 );
@@ -143,7 +143,7 @@ class MarketRow extends React.Component {
 
 
                 return (
-                    <td onClick={this._onClick.bind(this, marketID)} className="text-right" key={column.index}>
+                    <td onClick={this._onClick.bind(this, marketID)} key={column.index}>
                         {utils.format_number(finalPrice, finalPrice > 1000 ? 0 : finalPrice > 10 ? 2 : precision)}
                     </td>
                 );

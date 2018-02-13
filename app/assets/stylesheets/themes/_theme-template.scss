@@ -43,6 +43,10 @@ $pulsate-red-end
     font-size: 12px;
   }
 
+  .settings-cog {
+    top: 2px;
+  }
+
   .spinner-button-circle .circle-wrapper{
     display: inline-block;
     vertical-align: middle;
@@ -188,10 +192,13 @@ $pulsate-red-end
 
     h1, h2, h3, h4, h5, h6 {
         color: $primary-text-color;
+        font-size: .9rem;
+        font-weight: normal;
+        text-transform: uppercase;
     }
 
     .modal {
-        @include color($light-text-color, $account-cells);
+        @include color($light-text-color, $bg-color);
         .close-button {
             color: $secondary-text-color;
             &:hover {
@@ -278,9 +285,10 @@ $pulsate-red-end
         }
 
     }
-    
+
     .asset-prefix {
         color: $light-text-color !important;
+        font-size: .9rem;
     }
 
     .transfer-top {
@@ -293,9 +301,13 @@ $pulsate-red-end
     // buttons
 
     .button {
-        background: $button-bg-color;
+        background: $bg-color;
+        border: 1px solid $button-bg-color;
+        color: $button-bg-color;
         &:hover, &:focus, &:active {
-            background-color: lighten($button-bg-color, 4%) !important;
+            // background-color: lighten($button-bg-color, 4%) !important;
+            color: $bg-color;
+            background-color: $button-bg-color;
         }
         &.outline {
             color: $secondary-text-color;
@@ -319,13 +331,16 @@ $pulsate-red-end
     }
 
     .header a.button.create-account {
-        transition: color 0s !important;
-        color: $button-bg-color !important;
+        // transition: color 0s !important;
+        // color: $button-bg-color !important;
+        font-size: .9rem;
+        color: $account-dimmed;
         > span > svg > path {
             fill: $button-bg-color;
         }
         &:hover {
-            color: lighten($button-bg-color, 10%) !important;
+            // color: lighten($button-bg-color, 10%) !important;
+            color: $primary-text-color;
             > span > svg > path {
                 fill: lighten($button-bg-color, 10%);
             }
@@ -339,9 +354,10 @@ $pulsate-red-end
 
         div.header-right-lock {
             padding: 1rem .25rem;
-            &:hover {
-                background-color: $bg-color;
-            }
+            // border-right: 1px solid $border-color;
+            // &:hover {
+            //     background-color: $bg-color;
+            // }
         }
 
         div.dropdown-wrapper {
@@ -350,9 +366,9 @@ $pulsate-red-end
                     fill: $account-dimmed;
                 }
             }
-            &:hover {
-                background-color: $bg-color;
-            }
+            // &:hover {
+            //     background-color: $bg-color;
+            // }
         }
 
         div.dropdown-wrapper.active {
@@ -392,7 +408,9 @@ $pulsate-red-end
 
 
     .header span.icon.lock-unlock > svg > path {
-        fill: $button-bg-color;
+        fill: #fff;
+        width: 1.4rem;
+        height: 1.4rem;
     }
 
     .grp-menu-item button {
@@ -403,7 +421,7 @@ $pulsate-red-end
 
     .grp-menu-item {
         > a, .button {
-            color: $primary-text-color !important;
+            // color: $primary-text-color !important;
         }
     }
 
@@ -419,7 +437,7 @@ $pulsate-red-end
             &:hover {
                 color: $info-color;
             }
-            > span { font-weight: bold; }
+            // > span { font-weight: bold; }
         }
         svg > path { fill: $secondary-text-color; }
         // svg:hover > path { fill: $primary-text-color; }
@@ -468,7 +486,7 @@ $pulsate-red-end
     .table {
         > thead > tr > th {
             border-bottom-color: $dark-text-color;
-            color: $secondary-text-color;
+            // color: $secondary-text-color;
         }
         > tbody > tr > td {
             border-bottom-color: $dark-text-color;
@@ -589,13 +607,29 @@ $pulsate-red-end
 
     input[type="text"], input[type="password"], input[type="email"], input[type="number"], input[type="search"], textarea, input[role="combobox"], select[role="combobox"] {
         background-color: $input-background;
-        border: 0;
+        border: 1px solid $border-color;
         color: $primary-text-color;
         &:hover, &:focus, &:active {
             background-color: $input-background;
         }
         &:focus {
             border-color: #aaa;
+        }
+        &:focus::-webkit-input-placeholder {
+            color: $primary-text-color;
+        }
+
+        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: $primary-text-color;
+        }
+        &::-moz-placeholder { /* Firefox 19+ */
+            color: $primary-text-color;
+        }
+        &:-ms-input-placeholder { /* IE 10+ */
+            color: $primary-text-color;
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+            color: $primary-text-color;
         }
     }
 
@@ -670,12 +704,12 @@ $pulsate-red-end
 
     .value.negative {
         color: $ask-color !important;
-        font-weight: bold;
+        // font-weight: bold;
     }
 
     .value.positive {
         color: $bid-color !important;
-        font-weight: bold;
+        // font-weight: bold;
     }
 
     .active-bucket {
@@ -691,7 +725,7 @@ $pulsate-red-end
 
         > select {
             background-color: lighten($light-panel-bg-color, 12%);
-            background: lighten($light-panel-bg-color, 12%) url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20version%3D%221.1%22%20width%3D%2232%22%20height%3D%2224%22%20viewBox%3D%220%200%2032%2024%22%3E%3Cpolygon%20points%3D%220%2C0%2032%2C0%2016%2C24%22%20style%3D%22fill%3A%20black%22%3E%3C/polygon%3E%3C/svg%3E") right 10px center no-repeat;
+            background: lighten($light-panel-bg-color, 12%) url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNnB4IiBoZWlnaHQ9IjEycHgiIHZpZXdCb3g9IjAgMCA2IDEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCA0OC4xICg0NzI1MCkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+R3JvdXA8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iQXJ0Ym9hcmQiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMC4wMDAwMDAsIC02LjAwMDAwMCkiPgogICAgICAgIDxnIGlkPSJHcm91cCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjAuMDAwMDAwLCA2LjAwMDAwMCkiIGZpbGw9IiM4ODg4ODgiPgogICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aC0yLUNvcHkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMuMDAwMDAwLCA5LjUwMDAwMCkgcm90YXRlKC0xODAuMDAwMDAwKSB0cmFuc2xhdGUoLTMuMDAwMDAwLCAtOS41MDAwMDApICIgcG9pbnRzPSIwIDExLjkzMTM2NzYgMi45Njk2Njk5MiA3IDYgMTIiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlBhdGgtMiIgcG9pbnRzPSIwIDQuOTMxMzY3NTkgMi45Njk2Njk5MiAwIDYgNSI+PC9wb2x5Z29uPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+") right 5px center no-repeat;
         }
     }
 
@@ -705,7 +739,7 @@ $pulsate-red-end
             color: $primary-text-color;
         }
         h6 {
-            font-weight: bold;
+            // font-weight: bold;
         }
         .bottom {
             border-top-color: $bg-color;
@@ -729,7 +763,7 @@ $pulsate-red-end
             border: 2px solid $button-bg-color;
 
             > a {
-                font-weight: bold;
+                // font-weight: bold;
                 color: $primary-text-color;
             }
         }
@@ -759,7 +793,7 @@ $pulsate-red-end
     }
 
     .my-account h5, .my-account h4, .my-account p, table.table > tbody > tr > td.my-account > span {
-        font-weight: bold;
+        // font-weight: bold;
         color: $info-color;
     }
 
@@ -1002,7 +1036,8 @@ $pulsate-red-end
     }
 
     .menu-group.primary, .menu-group.primary .menu-bar {
-        background-color: $account-background;
+        background-color: transparent;
+        // font-size: 1.2rem;
 
         li {
 
@@ -1037,23 +1072,25 @@ $pulsate-red-end
     // Exchange
     .mymarkets-header {
         border-bottom-color: $button-bg-color;
-        &.inactive {
-            border-bottom-color: transparent;
+        &.inactive span {
+            border-bottom-color: #000;
             color: $secondary-text-color;
         }
     }
 
     .exchange-content-header {
         color: $light-text-color;
-        background-color: $header-color !important;
-        border-bottom: 1px solid $button-bg-color;
-        &.bid {
-            border-bottom: 1px solid $bid-color;
-        }
+        padding: 20px;
+        padding-bottom: 0;
+        // background-color: $header-color !important;
+        // border-bottom: 1px solid $button-bg-color;
+        // &.bid {
+        //     border-bottom: 1px solid $bid-color;
+        // }
 
-        &.ask {
-            border-bottom: 1px solid $ask-color;
-        }
+        // &.ask {
+        //     border-bottom: 1px solid $ask-color;
+        // }
     }
 
     // .block-content-header {
@@ -1062,9 +1099,9 @@ $pulsate-red-end
     // }
 
     td.orderHistoryBid {
-
+        // padding-left: 20px;
         > span.price-integer, > span > span.price-integer, > span.formatted-price > span {
-            font-weight: bold;
+            // font-weight: bold;
             color: $bid-color;
         }
 
@@ -1077,8 +1114,10 @@ $pulsate-red-end
     }
 
     td.orderHistoryAsk  {
+        // padding-left: 20px;
+
         > span.price-integer, > span > span.price-integer, > span.formatted-price > span {
-            font-weight: bold;
+            // font-weight: bold;
             color: $ask-color;
         }
 
@@ -1089,8 +1128,10 @@ $pulsate-red-end
     }
 
     td.orderHistoryCall {
+        // padding-left: 20px;
+
         > span.price-integer, > span > span.price-integer, > span.formatted-price > span {
-            font-weight: bold;
+            // font-weight: bold;
             color: $call-color;
         }
 
@@ -1102,7 +1143,7 @@ $pulsate-red-end
 
     table.order-table > tbody, tbody.orderbook {
         > tr.my-order > td {
-            font-weight: bold;
+            // font-weight: bold;
             color: $info-color;
             > span.price-integer, > span > span.price-integer, > span >span.price-decimal {
                 color: $info-color;
@@ -1111,12 +1152,26 @@ $pulsate-red-end
         }
     }
 
-    .bid {
-        background-color: $bid-color !important;
+    .button.bid {
+        // background-color: $bid-color !important;
+        border-color: $bid-color;
+        color: $bid-color;
+
+        &:hover {
+            background-color: $bid-color !important;
+            color: $bg-color;
+        }
     }
 
-    .ask {
-        background-color: $ask-color !important;
+    .button.ask {
+        // background-color: $ask-color !important;
+        border-color: $ask-color;
+        color: $ask-color;
+
+        &:hover {
+            background-color: $ask-color !important;
+            color: $bg-color;
+        }
     }
 
     .orderbook-latest-price {
@@ -1125,7 +1180,7 @@ $pulsate-red-end
             border-bottom: 1px solid grey !important;
             border-top: 1px solid grey !important;
             padding: 10px 0 !important;
-            font-weight: bold;
+            // font-weight: bold;
             font-size: 13px;
         }
     }
@@ -1143,7 +1198,7 @@ $pulsate-red-end
     }
 
     tr.activeMarket, tr.activeMarket:hover {
-        color: #4C85D8;
+        color: #012EC5;
         background-color: $header-color;
     }
 
@@ -1155,14 +1210,14 @@ $pulsate-red-end
         &:hover {background-color: lighten($panel-bg-color, 4%);}
     }
     .stats .stressed-stat {
-        
+
         padding: 10px 0;
-        font-size:18px;
-     
+        font-size: .9rem;
+
         &.is-call {
             color: $call-color!important;
-        }   
-        
+        }
+
         &.daily_change {
             &.positive {
                 color:$account-green!important;
@@ -1172,11 +1227,11 @@ $pulsate-red-end
             }
         }
     }
-    
+
     .stat-text {
         margin-top: 3px;
-        font-size: 11px;
-        color: gray;
+        font-size: .7rem;
+        color: $account-dimmed;
     }
 
     .buy-sell-box {
@@ -1188,10 +1243,10 @@ $pulsate-red-end
             height: 1.75rem;
             line-height: 1.75rem;
             border: none;
-            color: $primary-text-color;
-            background-size: 8px 8px;
+            color: $account-dimmed;
+            background-size: 12px 12px;
             background-color: $header-color;
-            font-size: 12px;
+            // font-size: 12px;
 
             > option {
                 color: $primary-text-color;
@@ -1209,7 +1264,7 @@ $pulsate-red-end
     }
 
     .header-sub-title {
-        font-size: 80%;
+        font-size: .7rem;
         color: $light-text-color;
     }
 
@@ -1221,7 +1276,7 @@ $pulsate-red-end
         background-color: $header-color;
         padding: 8px 35px;
         border-bottom: 1px solid grey;
-        font-weight: bold;
+        // font-weight: bold;
         text-transform: uppercase;
         cursor: pointer;
     }
@@ -1237,32 +1292,36 @@ $pulsate-red-end
     .bucket-option {
         @include button-focus($secondary-text-color, $panel-bg-color, 0);
         &:hover {
-            @include button-focus($primary-text-color, $panel-bg-color, 10);
+            @include button-focus($primary-text-color, $bg-color, 10);
         }
-    }
 
-    .active-bucket {
-        @include button-focus($primary-text-color, $panel-bg-color, 10);
+        &.active-bucket {
+            @include button-focus($primary-text-color, $border-color, 10);
+        }
     }
 
 
     .indicators, li.stat.clickable{
-        color: $secondary-text-color;
-        // &:hover{
-        //   @include button-focus($primary-text-color, $panel-bg-color, 10);
-        // }
+        transition: all 0.3s ease 0s;
+        // color: $secondary-text-color;
+        &:hover{
+          // @include button-focus($secondary-text-color, $bg-color, 10);
+          color: $secondary-text-color;
+        }
     }
 
 
     .mymarkets-tabs {
         > li {
-            @include button-focus($secondary-text-color, $panel-bg-color, 0);
+            font-size: .7rem;
+            // @include button-focus($secondary-text-color, $panel-bg-color, 0);
             &:hover {
-                @include button-focus($primary-text-color, $panel-bg-color, 10);
+                // @include button-focus($primary-text-color, $panel-bg-color, 10);
             }
 
             &.active {
-                @include button-focus($primary-text-color, $panel-bg-color, 10);
+                // @include button-focus($primary-text-color, $panel-bg-color, 10);
+                border-bottom: 1px solid #012EC5;
             }
         }
     }
@@ -1322,13 +1381,13 @@ $pulsate-red-end
         > td.danger {
             background-color: darken($alert-color, 15%) !important;
             color: $dark-text-color;
-            font-weight: bold;
+            // font-weight: bold;
         }
 
         > td.warning {
             background-color: darken($warning-color, 15%) !important;
             color: $dark-text-color;
-            font-weight: bold;
+            // font-weight: bold;
         }
     }
 
@@ -1415,7 +1474,7 @@ $pulsate-red-end
 
     table.table > tbody > tr.in-use {
         > td:nth-child(2) {
-            font-weight: bold;
+            // font-weight: bold;
         }
     }
 
@@ -1430,7 +1489,7 @@ $pulsate-red-end
     }
 
     input.my-key, td.my-key a {
-        font-weight: bold;
+        // font-weight: bold;
         color: $info-color;
     }
 
@@ -1492,16 +1551,17 @@ $pulsate-red-end
     }
 
     table.table.dashboard-table {
+        border: 1px solid $border-color;
         > thead > tr > th {
-            background-color: $account-header;
+            // background-color: $account-header;
             color: $account-primarytext;
-            border-color: $account-border;
+            border-color: $border-color;
         }
         > tbody > tr {
             > td {
-                background-color: $account-cells;
+                // background-color: $account-cells;
                 color: $account-primarytext;
-                border-color: $account-border;
+                border-color: $border-color;
                 .icon > svg > path {
                     fill: $account-primarytext;
                 }
@@ -1512,7 +1572,7 @@ $pulsate-red-end
             }
             &.total-value {
                 td {
-                    background-color: $account-header;
+                    // background-color: $account-header;
                 }
                 td:nth-child(n+2) {
                     color: $account-green;
@@ -1536,8 +1596,8 @@ $pulsate-red-end
     }
 
     div.account-creation {
-        width:450px;
-        background-color: $account-cells;
+        width:480px;
+        // background-color: $account-cells;
 
         div.button > a {
             color: $primary-text-color;
@@ -1570,37 +1630,37 @@ $pulsate-red-end
     tr > td > a.primary-text {
         color: $primary-text-color;
     }
-    
+
     .pulsate {
-        
+
         &.red {
             animation: pulsate-red .5s ease-out;
         }
-        
+
         &.green {
             animation: pulsate-green .5s ease-out;
         }
-        
-        animation-iteration-count: 1; 
+
+        animation-iteration-count: 1;
     }
-    
+
     @-webkit-keyframes pulsate-green {
-        0% { 
+        0% {
             color: $pulsate-green-start;
         }
-        100% { 
+        100% {
             color: $pulsate-green-end;
         }
     }
     @-webkit-keyframes pulsate-red {
-        0% { 
+        0% {
             color: $pulsate-red-start;
         }
-        100% { 
+        100% {
             color: $pulsate-red-end;
         }
     }
-    
+
 }
 
 .midnightTheme .gate_fee .amount-selector {

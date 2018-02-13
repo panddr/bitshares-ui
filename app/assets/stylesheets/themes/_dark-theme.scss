@@ -6,16 +6,16 @@ $light-text-color: #fff;
 $dark-text-color: #444;
 $primary-text-color: #ffffff;
 $secondary-text-color: darken($primary-text-color, 20%);
-$link-text-color: #4A90E2;
-$error-text-color: #ff3950;
+$link-text-color: #ffffff;
+$error-text-color: #DB0001;
 
-$bg-color: #2a2a2a;
-$panel-bg-color: #3f3f3f;
-$light-panel-bg-color: #6a6a6a;
-$super-light-panel-bg-color: lighten($light-panel-bg-color, 8%);
-$button-bg-color: #4A90E2;
+$bg-color: #000;
+$panel-bg-color: #000;
+$light-panel-bg-color: #000;
+$super-light-panel-bg-color: #444;
+$button-bg-color: #012EC5;
 $secondary-button-bg-color: #999999;
-$input-background: lighten($bg-color, 8%);
+$input-background: #000;
 
 $alert-color: $error-text-color;
 $info-color: #A0D3E8;
@@ -24,22 +24,22 @@ $warning-color: #FCAB53;
 $fee-color: $secondary-text-color;
 
 // Exchange colors
-$bid-color: #6BA583;
-$ask-color: #E3745B;
+$bid-color: #00FF02;
+$ask-color: #DB0001;
 $call-color: #BBBF2B;
-$positive-color: #258A14;
+$positive-color: #00FF02;
 $negative-color: #DB0000;
 $row-accent-color: #3C3C3C;
-$header-color: #484848;
+$header-color: #000;
 
 // Account table view colors
 $account-header: #656565;
 $account-cells: #4b5158;
 $account-green: #7ED321;
 $account-primarytext: white;
-$account-dimmed: #afafaf;
+$account-dimmed: #888;
 $account-border: #323131;
-$account-background: #3f3f3f;
+$account-background: #000;
 $account-tabs-background: #2f2f2f;
 
 $pulsate-green-start:$account-green;

@@ -228,19 +228,17 @@ ul.account-overview {
 }
 
 table.table.dashboard-table {
+    font-size: .7rem;
     > thead > tr > th:first-of-type, > tbody > tr > td:first-of-type {
         padding-left: 1.5rem;
     }
     > thead > tr > th {
-        font-weight: 600;
-        font-size: 80%;
         text-align: center;
         border: none;
     }
     > tbody > tr {
         > td {
-            font-size: 0.8rem;
-            text-align: center;
+            font-size: .7rem;
             border: none;
 
             &.worker-name {
@@ -251,9 +249,6 @@ table.table.dashboard-table {
                 > div span.icon > svg {
                     width: 1.75rem;
                     height: 1.75rem;
-                }
-                > div > a {
-                    font-size: 90%;
                 }
             }
         }
@@ -291,7 +286,7 @@ div.hide-selector > div.new-worker-button {
     }
 }
 
-.shuffle-rev { 
+.shuffle-rev {
     > a span.icon > svg {
         -moz-transform: scaleX(-1);
         -o-transform: scaleX(-1);

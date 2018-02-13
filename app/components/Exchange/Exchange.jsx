@@ -1142,7 +1142,7 @@ class Exchange extends React.Component {
 
                     {/* Center Column */}
                     <div style={{paddingTop: 0}} className={cnames("grid-block main-content vertical no-overflow")} >
-                        <div className="grid-block vertical no-padding ps-container" id="CenterContent" ref="center">
+                        <div className="grid-block vertical ps-container" id="CenterContent" ref="center" style={{padding: "0", paddingRight: "10px", marginBottom: -1}}>
                         {!showDepthChart ? (
                             <div className="grid-block shrink no-overflow" id="market-charts" >
                                 {/* Price history chart */}
@@ -1221,7 +1221,7 @@ class Exchange extends React.Component {
                                 />
                             </div>)}
 
-                            <div className="grid-block no-overflow wrap shrink" >
+                            <div className="grid-block no-overflow wrap shrink exchanges-bordered-top" >
                                 {hasPrediction ? <div className="small-12 no-overflow" style={{margin: "0 10px", lineHeight: "1.2rem"}}><p>{description}</p></div> : null}
 
                                 {isFrozen ? <div className="error small-12 no-overflow" style={{margin: "0 10px", lineHeight: "1.2rem"}}><Translate content="exchange.market_frozen" asset={frozenAsset} component="p"/></div> : null}

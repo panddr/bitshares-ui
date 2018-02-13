@@ -1,9 +1,10 @@
-$border-color: rgba(128, 128, 128, 0.45);
+$border-color: #545456;
+$account-dimmed: #888;
 
 .green {
       color: #7bd500!important;
-      
-      .icon { 
+
+      .icon {
           > svg {
               > path {
                   fill: #7bd500!important;

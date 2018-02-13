@@ -16,9 +16,9 @@ class TableHeader extends React.Component {
         return (
             <thead>
                 <tr>
-                    <th style={{textAlign: "right"}}><Translate content="exchange.price" /><br/>{baseSymbol ? <span className="header-sub-title">(<AssetName name={baseSymbol} />/<AssetName name={quoteSymbol} />)</span> : null}</th>
-                    <th style={{textAlign: "right"}}><Translate content="transfer.amount" /><br/>{quoteSymbol ? <span className="header-sub-title">(<AssetName name={quoteSymbol} />)</span> : null}</th>
-                    <th style={{textAlign: "right"}}><Translate content="transaction.settlement_date" /><br/><span style={{visibility: "hidden"}} className="header-sub-title">d</span></th>
+                    <th><Translate content="exchange.price" /><br/>{baseSymbol ? <span className="header-sub-title">(<AssetName name={baseSymbol} />/<AssetName name={quoteSymbol} />)</span> : null}</th>
+                    <th><Translate content="transfer.amount" /><br/>{quoteSymbol ? <span className="header-sub-title">(<AssetName name={quoteSymbol} />)</span> : null}</th>
+                    <th><Translate content="transaction.settlement_date" /><br/><span style={{visibility: "hidden"}} className="header-sub-title">d</span></th>
             </tr>
             </thead>
         );
@@ -100,14 +100,14 @@ class OpenSettleOrders extends React.Component {
                 key="open_orders"
                 className="grid-block no-overflow small-12 no-padding vertical medium-horizontal middle-content"
             >
-                <div className="small-12 medium-6 large-6 xlarge-4 order-1" style={{paddingBottom: "1rem"}}>
+                <div className="small-12 medium-6 large-6 xlarge-4 order-1">
                     <div className="exchange-bordered">
                         <div className="exchange-content-header">
                             <Translate content="exchange.settle_orders" />
                         </div>
 
-                        <div className="grid-block" style={{maxHeight: "400px", overflow: "hidden", }} ref="orders">
-                            <table className="table order-table text-right table-hover">
+                        <div className="grid-block" style={{maxHeight: "280px", overflow: "hidden", }} ref="orders">
+                            <table className="table order-table table-hover">
                                 <TableHeader type="buy" baseSymbol={baseSymbol} quoteSymbol={quoteSymbol}/>
                                 <tbody ref="orders">
                                     {activeOrders}

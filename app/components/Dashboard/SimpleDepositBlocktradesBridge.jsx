@@ -106,12 +106,12 @@ class SimpleDepositBlocktradesBridge extends React.Component {
         }
 
         // Catch initial decimal input
-        if(target.value.charAt(0) == ".") { 
-            target.value = "0."; 
+        if(target.value.charAt(0) == ".") {
+            target.value = "0.";
         }
 
         // Catch double decimal and remove if invalid
-        if(target.value.charAt(target.value.length) != target.value.search(".")) { 
+        if(target.value.charAt(target.value.length) != target.value.search(".")) {
             target.value.substr(1);
         }
 
@@ -293,7 +293,7 @@ class SimpleDepositBlocktradesBridge extends React.Component {
                             <div className="small-6" style={{paddingRight: 10}}>
                                 <div className="grid-block">
                                     <label className="left-label"><Translate content="transfer.send" /></label>
-                                    {aboveLimit ? 
+                                    {aboveLimit ?
                                         <div className="error-msg inline-block tooltip" data-tip={counterpart.translate("tooltip.over_limit")}>
                                             <Translate content="gateway.over_limit" />&nbsp;<Icon name="question-circle" />
                                         </div> : null}
@@ -436,13 +436,13 @@ class SimpleDepositBlocktradesBridge extends React.Component {
         if (!asset) {
             return null;
         }
-        
+
         let logo = require("assets/logo-ico-blue.png");
 
         return (
             <div className="SimpleTrade__modal">
                 <div className="Modal__header" style={{background: "none"}}></div>
-                
+
                 <div
                     className="grid-block vertical no-overflow"
                     style={{
@@ -452,7 +452,6 @@ class SimpleDepositBlocktradesBridge extends React.Component {
                     }}>
 
                     <div style={{textAlign: "center"}}>
-                        <img style={{margin: 0, height: 80}} src={logo} /><br />
                         <p style={{fontSize: "1.8rem", fontWeight: "bold", marginBottom: 0}}>Buy</p>
                     </div>
 

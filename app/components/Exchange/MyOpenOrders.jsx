@@ -25,7 +25,7 @@ class TableHeader extends React.Component {
         return !dashboard ? (
             <thead>
                 <tr>
-                    <th style={{paddingLeft: 10, textAlign: this.props.leftAlign ? "left" : ""}}><Translate className="header-sub-title" content="exchange.price" /></th>
+                    <th style={{paddingLeft: 20, textAlign: this.props.leftAlign ? "left" : ""}}><Translate className="header-sub-title" content="exchange.price" /></th>
                     <th style={this.props.leftAlign ? {textAlign: "left"} : null}>{baseSymbol ? <span className="header-sub-title"><AssetName dataPlace="top" name={quoteSymbol} /></span> : null}</th>
                     <th style={this.props.leftAlign ? {textAlign: "left"} : null}>{baseSymbol ? <span className="header-sub-title"><AssetName dataPlace="top" name={baseSymbol} /></span> : null}</th>
                     <th style={{width: "28%", textAlign: this.props.leftAlign ? "left" : ""}}><Translate className="header-sub-title" content="transaction.expiration" /></th>
@@ -270,12 +270,11 @@ class MyOpenOrders extends React.Component {
 
         return (
             <div
-                style={{marginBottom: "15px"}}
                 key="open_orders"
                 className={this.props.className}
             >
 
-                <div className="exchange-bordered small-12" style={{height: 266}}>
+                <div className="exchange-bordered small-12" style={{height: 315}}>
                     <div className="exchange-content-header">
                         <Translate content="exchange.my_orders" />
                     </div>

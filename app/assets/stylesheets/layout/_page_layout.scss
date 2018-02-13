@@ -54,15 +54,15 @@ div.bordered-header {
 }
 
 .exchange-bordered {
-  border: 1px solid rgba(183, 183, 183, 0.29);
+  position: relative;
+  border: 1px solid $border-color;
+  border-left: 0;
+  border-top: 0;
+  height: 315px;
+}
 
-  div:first-child & {
-    margin: 0 10px 0 10px;
-  }
-
-  div:last-child & {
-    margin: 0 10px 0 10px;
-  }
+.exchanges-bordered-top {
+  border-top: 1px solid $border-color;
 }
 
 .generic-bordered-box {

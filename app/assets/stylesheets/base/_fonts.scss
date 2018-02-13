@@ -49,14 +49,19 @@
   font-weight: normal;
 }
 
+@include font-face(Lars-Mono, 'vendors/Lars-Mono', 300, normal);
 @mixin MonospaceFont {
-  font-family: "Lucida Console", Monaco, monospace !important;
+  font-family: "Lars-Mono", "Lucida Console", Monaco, monospace !important;
 }
 
 /* ***** styles ****** */
 
+html {
+  font-size: 16px;
+}
+
 body, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Roboto-Regular', arial, sans-serif;
+  font-family: "Lars-Mono", arial, sans-serif;
 }
 
 .monospace {
@@ -64,7 +69,7 @@ body, h1, h2, h3, h4, h5, h6 {
 }
 
 label, label > span {
-  @include RobotoMedium;
+  @include MonospaceFont;
   text-transform: uppercase;
 }
 
@@ -79,7 +84,7 @@ label, label > span {
 }
 
 button, .button {
-  @include RobotoRegular;
+  @include MonospaceFont;
   text-transform: uppercase;
 }
 
@@ -97,11 +102,11 @@ button, .button {
 // }
 
 .txtann {
-  @include RobotoRegular;
+  @include MonospaceFont;
 }
 
 .txtlabel {
-  @include RobotoRegular;
+  @include MonospaceFont;
   text-transform: uppercase;
 }
 
@@ -110,36 +115,36 @@ button, .button {
 // }
 
 .account-drop-down a.button {
-  @include RobotoRegular;
+  @include MonospaceFont;
 }
 
 .button {
-  @include RobotoCondensed;
+  @include MonospaceFont;
 }
 
 .footer .logo {
-  @include RobotoRegular;
+  @include MonospaceFont;
 }
 
 .tabs > .tab-item {
-  @include RobotoRegular;
+  @include MonospaceFont;
 }
 
 .label, .label.warning, .label.success, .label.info, .label.cancel, .label.alert {
-  @include RobotoRegular;
+  @include MonospaceFont;
 }
 
 .table > thead > tr > th {
-  @include RobotoRegular;
+  @include MonospaceFont;
 }
 
 .table.dashboard-table {
     > thead > tr > th {
-        @include RobotoRegular;
+        @include MonospaceFont;
     }
 
     > tbody > tr > td {
-        @include RobotoRegular;
+        @include MonospaceFont;
     }
 }
 
@@ -148,16 +153,16 @@ button, .button {
 // }
 
 .win32 {
-  @include RobotoRegular;
+  @include MonospaceFont;
 }
 
 .win32 {
   h1, h2, h3, h4, h5, h6 {
-    @include RobotoRegular;
+    @include MonospaceFont;
   }
 
   label, label > span {
-    @include RobotoRegular;
+    @include MonospaceFont;
   }
 
   button, .button {
@@ -165,23 +170,23 @@ button, .button {
   }
 
   .content-block > h3 {
-    @include RobotoRegular;
+    @include MonospaceFont;
   }
 
   .page-header > h3 {
-    @include RobotoRegular;
+    @include MonospaceFont;
   }
 
   a.currency, span.currency {
-    @include RobotoRegular;
+    @include MonospaceFont;
   }
 
   .txtlabel {
-    @include RobotoRegular;
+    @include MonospaceFont;
   }
 
   span.time {
-    @include RobotoRegular;
+    @include MonospaceFont;
   }
 
   .account-drop-down a.button {
@@ -189,19 +194,19 @@ button, .button {
   }
 
   .footer .logo {
-    @include RobotoRegular;
+    @include MonospaceFont;
   }
 
   .tabs > .tab-item {
-    @include RobotoRegular;
+    @include MonospaceFont;
   }
 
   .label, .label.warning, .label.success, .label.info, .label.cancel, .label.alert {
-    @include RobotoRegular;
+    @include MonospaceFont;
   }
 
    .key-value-table tr > td:first-child {
-    @include RobotoRegular;
+    @include MonospaceFont;
   }
 
 }

@@ -1,6 +1,19 @@
 // Hacks that should get cleaned up and put in appropriate files within the stylesheet layout
 // http://sass-guidelin.es/#shame-file
 
+.exchange-bordered::-webkit-scrollbar {
+  width: 5px;
+}
+
+.exchange-bordered::-webkit-scrollbar-track {
+  background: #ddd;
+}
+
+.exchange-bordered::-webkit-scrollbar-thumb {
+  background: #666;
+}
+
+
 #content.win32 {
   font-size: 90%;
   h1 {
@@ -94,6 +107,8 @@ a > .label {
 button, .button {
   transition: all 0.3s ease 0s !important;
   border: 1px solid transparent;
+  font-size: .9rem;
+  text-transform: uppercase;
   //margin: 2px 5px 2px 5px;
   vertical-align: middle;
   &.outline {
@@ -336,15 +351,19 @@ label.inline {
 }
 
 .__react_component_tooltip {
+  border-radius: 0 !important;
+  padding: 10px !important;
   z-index: 2000 !important;
-  border: 1px solid grey;
+  // border: 1px solid grey;
   max-width: 20rem;
+  font-size: .7rem !important;
+  line-height: 1rem !important;
 }
 
 .asset-prefix-replaced {
-  // text-transform: uppercase;
-  font-variant: small-caps;
-  text-transform: none;
+  text-transform: uppercase;
+  // font-variant: small-caps;
+  // text-transform: none;
 }
 
 select {
@@ -391,10 +410,6 @@ select.bts-select {
     .column-hide-medium {
         display: none !important;
     }
-}
-
-input, textarea {
-    border-radius: 5px !important;
 }
 
 input[type=number] {

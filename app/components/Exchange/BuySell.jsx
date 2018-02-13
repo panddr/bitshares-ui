@@ -236,7 +236,7 @@ class BuySell extends React.Component {
                                     </div>
                                     <div className="grid-block small-4 no-margin no-overflow buy-sell-box">
                                         <AssetName dataPlace="right" name={base.get("symbol")} />
-                                        &nbsp;/&nbsp;
+                                        /
                                         <AssetName dataPlace="right" name={quote.get("symbol")} />
                                     </div>
                                 </div>
@@ -295,7 +295,7 @@ class BuySell extends React.Component {
                                         <tbody>
                                           <tr className="buy-sell-info">
                                                 <td><Translate content="exchange.balance" />:</td>
-                                                <td style={{paddingLeft: 5, textAlign: "right"}}>
+                                                <td style={{paddingLeft: 5}}>
                                                     <span style={{borderBottom: "#A09F9F 1px dotted", cursor: "pointer"}} onClick={this._addBalance.bind(this, balanceToAdd)}>
                                                         {utils.format_number(balanceAmount.getAmount({real: true}), balancePrecision)} <AssetName name={balanceSymbol} />
                                                     </span>
@@ -303,9 +303,9 @@ class BuySell extends React.Component {
                                           </tr>
 
                                           <tr className="buy-sell-info">
-                                                <td style={{paddingTop: 5}}>{isBid ? <Translate content="exchange.lowest_ask" /> : <Translate content="exchange.highest_bid" />}:&nbsp;</td>
+                                                <td style={{paddingTop: 10}}>{isBid ? <Translate content="exchange.lowest_ask" /> : <Translate content="exchange.highest_bid" />}:&nbsp;</td>
                                                 {currentPrice ? (
-                                                <td style={{paddingLeft: 5, textAlign: "right", paddingTop: 5, verticalAlign: "bottom"}}>
+                                                <td style={{paddingLeft: 5, paddingTop: 10, verticalAlign: "bottom"}}>
                                                     <span style={{borderBottom: "#A09F9F 1px dotted", cursor: "pointer"}} onClick={this.props.setPrice.bind(this, type, currentPriceObject.sellPrice())}>
                                                     <PriceText price={currentPrice} quote={quote} base={base} /> <AssetName name={base.get("symbol")} />/<AssetName name={quote.get("symbol")} />
                                                     </span>

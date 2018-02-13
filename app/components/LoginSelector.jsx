@@ -37,7 +37,7 @@ export default class LoginSelector extends React.Component {
 
     render() {
         const childCount = React.Children.count(this.props.children);
-        
+
         const flagDropdown = <ActionSheet>
             <ActionSheet.Button title="" style={{width:"64px"}}>
                 <a style={{padding: "1rem", border: "none"}} className="button">
@@ -59,15 +59,14 @@ export default class LoginSelector extends React.Component {
                 </ul>
             </ActionSheet.Content>
         </ActionSheet>;
-        
+
         return (
             <div className="grid-block align-center">
                 <div className="grid-block shrink vertical">
                     <div className="grid-content shrink text-center account-creation">
-                        <div><img src={logo}/></div>
                         <Translate content="account.intro_text_title" component="h4"/>
                         <Translate unsafe content="account.intro_text_1" component="p" />
-                       
+
                         <div className="shrink text-center">
                             <div className="grp-menu-item overflow-visible account-drop-down">
                                 <div className="grp-menu-item overflow-visible" style={{margin:"0 auto"}}>
@@ -75,7 +74,7 @@ export default class LoginSelector extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        
+
                         {!!childCount ? null :
                         <div className="button-group">
                             <label style={{textAlign: "left"}}><Translate content="account.new_user" /><br/>
