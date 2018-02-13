@@ -956,12 +956,13 @@ class MarketsStore {
         } catch(err) {
 
         }
-        let close = !!price ? {
+
+        let close = {
             base: price.base.toObject(),
             quote: price.quote.toObject()
-        } : null;
+        };
 
-        if (!!price && isNaN(price.toReal())) {
+        if (isNaN(price.toReal())) {
             price = undefined;
             close = null;
         };

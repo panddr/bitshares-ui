@@ -118,6 +118,7 @@ div.Blocktrades__gateway {
 }
 
 div.service-selector {
+    margin-bottom: 2rem;
 
     @include breakpoint(medium) {
         border-bottom: 1px solid $border-color;

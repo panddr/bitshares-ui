@@ -6,7 +6,6 @@ import BindToChainState from "../Utility/BindToChainState";
 import {Tabs, Tab} from "../Utility/Tabs";
 import counterpart from "counterpart";
 import SignedMessageAction from "../../actions/SignedMessageAction";
-import SignedMessage from "../Account/SignedMessage";
 
 /** This component gives a user interface for signing and verifying messages with the bitShares memo key.
  *  It consists of two tabs:
@@ -273,10 +272,16 @@ class AccountSignedMessages extends React.Component {
                                             </div>
                                         </div>
                                         }
-                                        {((this.state.tabvm_verified && this.state.tabvm_message_signed_and_verified !== null) || this.state.tabvm_flag_verifyonchange) &&
+                                        {this.state.tabvm_verified && this.state.tabvm_message_signed_and_verified !== null &&
                                         <div>
                                             <br />
-                                            <SignedMessage message={this.state.tabvm_message_signed}/>
+                                            <div style={{color: "gray"}}>
+                                                <fieldset>
+                                                    <legend style={{color: "white", weight: "bold"}}>Verified message from {this.state.tabvm_message_signed_and_verified.meta.account}</legend>
+                                                    <pre>{this.state.tabvm_message_signed_and_verified.content}</pre>
+                                                    <span style={{fontSize: "small", float: "right"}}>Signed on {this.state.tabvm_message_signed_and_verified.meta.timestamp}</span>
+                                                </fieldset>
+                                            </div>
                                         </div>
                                         }
                                     </span>

@@ -1,4 +1,5 @@
 import React from "react";
+// import Highcharts from "highcharts/highstock";
 import ReactHighstock from "react-highcharts/dist/ReactHighstock";
 import counterpart from "counterpart";
 
@@ -70,6 +71,8 @@ class TransactionChart extends React.Component {
     }
 
     render() {
+        let {blocks, head_block} = this.props;
+
         let {trxData, colors, max} = this._getData(this.props);
 
         let tooltipLabel = counterpart.translate("explorer.blocks.transactions");

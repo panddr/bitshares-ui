@@ -1,3 +1,57 @@
+div.fm-outer-container {
+    border-left: 1px solid $border-color;
+    border-top: 1px solid $border-color;
+    margin-bottom: 20px;
+}
+
+@include breakpoint(large) {
+    div.fm-container {
+        > div:first-child() {
+            padding-right: 15px;
+        }
+
+        > div:last-child() {
+            padding-right: 15px;
+        }
+    }
+}
+
+div.fm-container {
+    border: 1px solid $border-color;
+    border-top: none;
+    border-left: none;
+    padding: 1rem 0.5rem;
+    min-width: 13rem;
+   &:hover {
+    background-color: #D8D8D8;
+    cursor: pointer;
+   }
+
+   .fm-title, .fm-volume, .fm-change {
+    font-size: 0.85rem;
+   }
+
+   .fm-name {
+    font-weight: bold;
+    padding-bottom: 10px;
+   }
+
+   .fm-volume, .fm-change {
+    text-transform: lowercase;
+    font-variant: small-caps;
+    padding-top: 6px;
+   }
+}
+
+.Dashboard__intro-text {
+    padding: 20px;
+
+    > p:nth-of-type(2) {
+        padding-bottom: 1.25rem;
+        border-bottom: 1px solid $border-color;
+    }
+}
+
 .SimpleTrade__modal {
     // overflow: auto;
     .Modal__header {
@@ -57,7 +111,7 @@
         font-size: 90%;
         width: 100%;
         color: #ff3633;
-        @include RobotoMedium;
+        font-weight: bold;
         > span {
             vertical-align: top;
             top: 0px;
@@ -160,7 +214,7 @@ div.button.create-account {
 div.input-wrapper {
     > div.input-right-symbol {
         font-size: 0.9rem;
-        @include RobotoMedium;
+        font-weight: bold;
         position: absolute;
         top: 12px;
         right: 8px;
@@ -172,7 +226,7 @@ div.input-wrapper {
         padding-bottom: 5px;
         > div.float-right {
             clear: both;
-            @include RobotoMedium;
+            font-weight: bold;
         }
     }
 }
@@ -193,8 +247,7 @@ div.input-wrapper {
             padding-top: 1rem;
             padding-left: 2rem;
             padding-right: 2rem;
-            height: auto;
-            min-height: 650px;
+            height: 650px;
 
             .Modal__header {
                 text-align: center;
@@ -204,15 +257,13 @@ div.input-wrapper {
                 }
                 > p {
                     font-size: 1.8rem;
-                    @include RobotoMedium;
+                    font-weight: bold;
                     margin-bottom: 0px;
                 }
             }
 
             .Modal__body {
-                flex: 1;
                 height: 90%;
-                padding-top: 16px;
             }
 
 
@@ -258,7 +309,7 @@ div.input-wrapper {
 
 
                 > .maxDeposit {
-                    @include RobotoMedium;
+                    font-weight: bold;
                     font-size: 0.9rem;
                 }
 

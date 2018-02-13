@@ -1,9 +1,17 @@
 import React from "react";
 import Translate from "react-translate-component";
+import {saveAs} from "file-saver";
 import utils from "common/utils";
+import counterpart from "counterpart";
 import Icon from "../../Icon/Icon";
 import {getTransactionRecordList} from "../../../lib/common/gdexMethods";
 
+const alignLeft = {textAlign: "left"};
+const alignRight = {textAlign: "right"};
+
+function textContent(n) {
+    return n ? `"${n.textContent.replace(/[\s\t\r\n]/gi, " ")}"` : "";
+}
 
 const DEPOSIT_STATUS = {1:"confirming", 2:"waiting" ,3:"transfering", 4:"success", 5:"fail"};
 const WITHDRAW_STATUS = {1:"confirming", 2:"auditing" ,3:"audited", 4:"refused", 5:"transfering", 6:"success", 7:"fail"};
@@ -94,7 +102,7 @@ class GdexHistory extends React.Component {
                         historyStatusValue:historyStatusValue,
                     });
                 }
-            }).catch(() =>{
+            }).catch(res =>{
                 _this.setState({
                     totalNum: 0,
                     nextPageEnabled: false,
@@ -112,15 +120,17 @@ class GdexHistory extends React.Component {
         let {assetName, compactView, style, maxHeight} = this.props;
         let {headerHeight, allData} = this.state;
 
-        let history =[];
+        let history =[]
         Object.keys(allData).forEach(item=>{
             history.push(allData[item]);
         });
         history.sort((a,b) => {return b.unixtime - a.unixtime;});
+        let historyCount = history.length;
         style = style ? style : {};
         style.width = "100%";
         style.height = "100%";
 
+        let options = null;
         if(allData.length==0){
 
         }

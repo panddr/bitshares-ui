@@ -30,10 +30,7 @@ class SettingsStore {
             onClearStarredMarkets: SettingsActions.clearStarredMarkets,
             onAddWS: SettingsActions.addWS,
             onRemoveWS: SettingsActions.removeWS,
-            onShowWS: SettingsActions.showWS,
-            onHideWS: SettingsActions.hideWS,
             onHideAsset: SettingsActions.hideAsset,
-            onHideMarket: SettingsActions.hideMarket,
             onClearSettings: SettingsActions.clearSettings,
             onSwitchLocale: IntlActions.switchLocale,
             onSetUserMarket: SettingsActions.setUserMarket,
@@ -115,7 +112,13 @@ class SettingsStore {
             let olIdx = savedDefaults.themes.findIndex(a => a === "olDarkTheme");
             if (olIdx !== -1) savedDefaults.themes[olIdx] = "midnightTheme";
         }
-
+        if (savedDefaults.apiServer) {
+            savedDefaults.apiServer = savedDefaults.apiServer.filter(a => {
+                return !defaults.apiServer.find(b => {
+                    return b.url === a.url;
+                });
+            });
+        }
         this.defaults = merge({}, defaults, savedDefaults);
 
         (savedDefaults.apiServer || []).forEach(api => {
@@ -153,7 +156,6 @@ class SettingsStore {
         this.marketDirections = Immutable.Map(ss.get("marketDirections"));
 
         this.hiddenAssets = Immutable.List(ss.get("hiddenAssets", []));
-        this.hiddenMarkets = Immutable.List(ss.get("hiddenMarkets", []));
 
         this.apiLatencies = ss.get("apiLatencies", {});
 
@@ -291,18 +293,6 @@ class SettingsStore {
         ss.set("hiddenAssets", this.hiddenAssets.toJS());
     }
 
-    onHideMarket(payload) {
-        if (payload.id) {
-            if (!payload.status) {
-                this.hiddenMarkets = this.hiddenMarkets.delete(this.hiddenMarkets.indexOf(payload.id));
-            } else {
-                this.hiddenMarkets = this.hiddenMarkets.push(payload.id);
-            }
-        }
-
-        ss.set("hiddenMarkets", this.hiddenMarkets.toJS());
-    }
-
     onAddStarMarket(market) {
         let marketID = market.quote + "_" + market.base;
         if (!this.starredMarkets.has(marketID)) {
@@ -347,18 +337,6 @@ class SettingsStore {
 
     onRemoveWS(index) {
         this.defaults.apiServer.splice(index, 1);
-        ss.set("defaults_v1", this.defaults);
-    }
-
-    onHideWS(url) {
-        let node = this.defaults.apiServer.find((node) => node.url === url);
-        node.hidden = true;
-        ss.set("defaults_v1", this.defaults);
-    }
-
-    onShowWS(url) {
-        let node = this.defaults.apiServer.find((node) => node.url === url);
-        node.hidden = false;
         ss.set("defaults_v1", this.defaults);
     }
 

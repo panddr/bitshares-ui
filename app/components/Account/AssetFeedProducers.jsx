@@ -11,8 +11,33 @@ export default class AccountFeedProducers extends React.Component {
         super(props);
 
         this.state = {
+            producers: props.asset.getIn(["bitasset", "feeds"], []).map(a => {
+                return a.first();
+            }),
             producer_name: null,
+            original: props.asset.getIn(["bitasset", "feeds"], []).map(a => {
+                return a.first();
+            }),
+            hasChanged: false
         };
+    }
+
+    _onSubmit() {
+        AssetActions.updateFeedProducers(
+            this.props.account.get("id"),
+            this.props.asset,
+            this.state.producers.toArray()
+        );
+    }
+
+    onChangeList(action = "add", id) {
+        let current = this.state.producers;
+        if (action === "add" && !current.includes(id)) {
+            current = current.push(id);
+        } else if (action === "remove" && current.includes(id)) {
+            current = current.remove(current.indexOf(id));
+        }
+        this.setState({producers: current, hasChanged: current !== this.state.original});
     }
 
     onAccountChanged(account) {
@@ -24,6 +49,13 @@ export default class AccountFeedProducers extends React.Component {
     onAccountNameChanged(name) {
         this.setState({
             producer_name: name
+        });
+    }
+
+    onReset() {
+        this.setState({
+            producers: this.state.original,
+            hasChanged: false
         });
     }
 
@@ -50,12 +82,12 @@ export default class AccountFeedProducers extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.producers.map((a, i) => {
+                        {this.state.producers.map((a, i) => {
                             return (
                                 <tr key={a}>
                                     <td style={{textAlign: "left"}}>#{i + 1}</td>
                                     <td style={{textAlign: "left"}}><LinkToAccountById account={a} /></td>
-                                    <td className="clickable" onClick={this.props.onChangeList.bind(this, "remove", a)}>
+                                    <td className="clickable" onClick={this.onChangeList.bind(this, "remove", a)}>
                                         <Icon name="cross-circle" className="icon-14px" />
                                     </td>
                                 </tr>
@@ -73,9 +105,13 @@ export default class AccountFeedProducers extends React.Component {
                         error={null}
                         tabIndex={1}
                         action_label="account.perm.confirm_add"
-                        onAction={this.props.onChangeList.bind(this, "add", this.state.new_producer_id)}
+                        onAction={this.onChangeList.bind(this, "add", this.state.new_producer_id)}
                      />
                  </div>
+                <div style={{paddingTop: "1.5rem"}}>
+                    <div className={"button" + (!this.state.hasChanged ? " disabled" : "")} onClick={this._onSubmit.bind(this)}>Update</div>
+                    <div className={"button" + (!this.state.hasChanged ? " disabled" : "")} onClick={this.onReset.bind(this)}>Reset</div>
+                </div>
             </div>
         );
     }

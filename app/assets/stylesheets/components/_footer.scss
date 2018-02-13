@@ -2,6 +2,7 @@
     border-top: 1px solid $border-color;
     text-transform: uppercase;
     background-color: #777;
+    // height: 36px;
     line-height: 36px;
     vertical-align: middle;
     color: #fff;
@@ -10,7 +11,7 @@
 
     div.footer-status {
         position: absolute;
-        right: 20px;
+        right: 0;
         font-size: .7rem;
         > span {
             position: relative;
@@ -38,6 +39,7 @@
         border-right: 1px solid $border-color;
         padding-top: 10px;
         padding-bottom: 10px;
+        // font-weight: bold;
         font-size: .9rem;
         line-height: 2rem;
         .version {
@@ -48,7 +50,6 @@
 
     > div > div:last-of-type {
         padding-left: 20px;
-        padding-right: 20px;
         border-left: 1px solid $border-color;
         overflow: hidden;
         padding-top: 10px;
