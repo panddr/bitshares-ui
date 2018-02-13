@@ -1071,7 +1071,7 @@ $pulsate-red-end
             }
 
             > a:hover, > a.active{
-                background-color: $bg-color !important;
+                background-color: transparent !important;
                 color: $primary-text-color;
 
                 .icon > svg > path {

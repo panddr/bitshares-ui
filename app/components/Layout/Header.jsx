@@ -345,11 +345,11 @@ class Header extends React.Component {
 
         return (
             <div className="header menu-group primary">
-                {/*<div className="show-for-small-only">
+                {<div className="show-for-small-only">
                     <ul className="primary menu-bar title">
                         <li><a href onClick={this._triggerMenu}><Icon className="icon-32px" name="menu"/></a></li>
                     </ul>
-                </div>*/}
+                </div>}
                 {__ELECTRON__ ? <div className="grid-block show-for-medium shrink electron-navigation">
                     <ul className="menu-bar">
                         <li>

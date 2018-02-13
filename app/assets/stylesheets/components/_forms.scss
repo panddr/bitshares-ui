@@ -334,26 +334,23 @@ button.blue { background-color: rgb(65, 116, 184); }
 button.disabled { background-color: rgb(77, 94, 116); }
 
 .button.hollow {
-  background-color: transparent;
-  @include RobotoCondensed;
-
   &:hover {
-    color: #fff;
+    border: 1px solid #012EC5;
   }
 }
 
 a.button span {
-  color: #fff;
+  // color: #fff;
 }
 
 .button.hollow.primary {
-  border-color: $bs-blue;
-  color: $bs-blue!important;
-  background: transparent;
+  // border-color: $bs-blue;
+  // color: $bs-blue!important;
+  // background: transparent;
 
-    &:hover {
-        color: #fff!important;
-    }
+    // &:hover {
+    //     color: #fff!important;
+    // }
 }
 
 .market-button {
