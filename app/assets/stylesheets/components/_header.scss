@@ -43,15 +43,13 @@
 
   div.account-drop-down div.total-value {
     text-align: left;
-    font-size: 80%;
+    font-size: .7rem;
     line-height: initial;
   }
 }
 
 div.header-balance {
     a {
-        font-size: 90%;
-        font-weight: bold;
         &:hover {
             background-color: transparent !important;
         };
@@ -63,8 +61,6 @@ div.account-drop-down {
         padding-bottom: 10px;
     }
   a.button {
-      // font-weight: bold;
-      // font-size: 90%;
       background-color: transparent;
   }
   a:active.button, a:hover.button {
@@ -127,6 +123,7 @@ div.account-drop-down div.dropdown-wrapper {
     > li {
         list-style: none;
         min-width: 200px;
+
         > div.table-cell {
             padding: 15px 5px 14px 5px;
             text-align: center;
@@ -148,6 +145,28 @@ div.account-drop-down div.dropdown-wrapper {
         }
     }
 }
+
+div.account-drop-down div.account-dropdown-wrapper {
+  > li {
+    > div.table-cell {
+      height: 64px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}
+
+div.account-drop-down div.menu-dropdown-wrapper {
+  > li {
+    width: 64.55px;
+
+    > div.table-cell {
+      height: 64px;
+      padding: 23px 5px 24px 5px;
+    }
+  }
+}
+
 ul.dropdown.header-menu {
     transition: padding 0s, height 3s linear;
     border: none;
@@ -181,4 +200,26 @@ ul.dropdown.header-menu {
             }
         }
     }
+}
+
+.account-summary {
+    text-align: right;
+    line-height: initial;
+    display: inline-block;
+
+    .icon {
+        margin-right: 5px;
+    }
+
+    svg path {
+        fill: #fff;
+    }
+}
+
+.account-name .icon {
+    margin-right: 5px;
+}
+
+.active-account {
+    padding-right: 20px;
 }

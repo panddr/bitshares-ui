@@ -93,6 +93,7 @@ class Footer extends React.Component {
                     <div className="grid-block">
                         <div className="logo" style={
                             {
+                                fontSize: state.newVersion ? "0.9em" : "0.9em",
                                 cursor: state.newVersion ? "pointer" : "normal",
                                 marginTop: state.newVersion ? "-5px" : "0px",
                                 overflow: "hidden"

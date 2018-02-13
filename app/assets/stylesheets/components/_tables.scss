@@ -4,6 +4,10 @@
   width: 100%;
 }
 
+th {
+  font-weight: normal;
+}
+
 .table > thead > tr > th {
   // border-bottom: 1px solid $border-color;
   padding: 12px 5px;
@@ -60,4 +64,14 @@
   td, th {
     font-size: 94%;
   }
+}
+
+
+/* Wrap table in div with this class to make horizontal scroll */
+.responsive-table {
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+  max-width: 100%;
+  width: 100vw;
 }

@@ -83,7 +83,7 @@ p.order-table-title {
 .notification.warning,
 .notification.alert,
 .notification.cancel {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
 }
 
 .backingWarning { color: yellow; }
@@ -147,17 +147,76 @@ form.order-form {
             padding-bottom: 8px !important;
         }
     }
+    .transition-container {
+      display: table-row-group;
+    }
     > .table-container {
         flex-grow: 1;
         width: 100%;
         position: relative;
     }
-    > .spread {
-        flex-shrink: 1;
-        width: 100%;
-        padding: 0.25rem 0 0.25rem 0;
-        border-top: 1px solid #777;
-        border-bottom: 1px solid #777;
+    .no-orders {
+        text-align: center !important;
+        margin-left: auto;
+        margin-right: auto;
+        &.padtop {
+            padding-top: 1em;
+        }
+    }
+    .ps-scrollbar-y-rail {
+        width: 10px !important;
+        .ps-scrollbar-y {
+          width: 6px !important;
+        }
+    }
+    .cell {
+        display: table-cell;
+        font-size: 12px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        vertical-align: middle;
+        text-align: right;
+        &.header-cell {
+          padding-top: 0;
+          padding-bottom: 0;
+        }
+        $scrollBarSpacePadding: 15px;
+        &.left, &.right {
+          padding-left: $scrollBarSpacePadding;
+          padding-right: $scrollBarSpacePadding;
+        }
+        .text-center.spread {
+            color: grey;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            .lock-unlock {
+              margin-left: auto;
+              margin-right: auto;
+            }
+            .left {
+                padding-left: $scrollBarSpacePadding;
+            }
+            .right {
+                padding-right: $scrollBarSpacePadding;
+            }
+        }
+    }
+    .bottom-header {
+      width: 100%;
+      // height: 2rem;
+      .button.outline {
+        border-left: none
+      }
+    }
+    .order-table-container {
+       width: 100%;
+       height: calc(100% - 32px);
+    }
+    .top-header {
+      text-align: right;
+      height: 31px;
     }
 }
 
@@ -243,18 +302,18 @@ div.market-stats-container {
 }
 
 ul.market-stats {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     display: flex;
     flex-wrap: wrap;
 }
 .market-stats .stat {
     // text-align: left;
-    // font-size: 0.75rem;
+    // font-size: 0.7rem;
     overflow: hidden;
 }
 
 .market-stats .stat .value {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: #000;
     letter-spacing: normal;
 }
@@ -302,7 +361,6 @@ ul.market-stats {
 }
 
 .market-symbol {
-    font-weight: bold;
     font-size: 1.1rem;
     padding-left: 0.3rem;
     padding-right: 0.5rem;
@@ -462,9 +520,9 @@ input[type=number]::-webkit-outer-spin-button {
 
 .mymarkets-list {
     padding: 0;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     .table > thead tr th {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
     }
 
     .table > tbody tr td {
@@ -487,7 +545,7 @@ table thead tr th.mymarkets-header {
     fill: #CC9F00 !important;
 }
 
-.grey-star > svg > path, .shuffle > svg > path {
+.grey-star > svg > path, .grey-shuffle > svg > path {
     fill: #878787 !important;
 }
 
@@ -594,7 +652,7 @@ form.hide-container {
             margin: 0;
             list-style: none;
             text-align: left;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
 
             input {
                 font-size: 0.8rem;
@@ -638,8 +696,4 @@ form.hide-container {
     > a > span.asset-name {
         text-transform: none;
     }
-}
-
-tbody.orderbook > tr.my-order > td {
-    font-weight: bold;
 }

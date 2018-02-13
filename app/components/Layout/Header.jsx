@@ -42,11 +42,16 @@ class Header extends React.Component {
     constructor(props, context) {
         super();
         this.state = {
-            active: context.location.pathname
+            active: context.location.pathname,
+            accountsListDropdownActive: false
         };
 
         this.unlisten = null;
+        this._toggleAccountDropdownMenu = this._toggleAccountDropdownMenu.bind(this);
+        this._toggleDropdownMenu = this._toggleDropdownMenu.bind(this);
         this._closeDropdown = this._closeDropdown.bind(this);
+        this._closeMenuDropdown = this._closeMenuDropdown.bind(this);
+        this._closeAccountsListDropdown = this._closeAccountsListDropdown.bind(this);
         this.onBodyClick = this.onBodyClick.bind(this);
     }
 
@@ -91,6 +96,7 @@ class Header extends React.Component {
             nextProps.currentLocale !== this.props.currentLocale ||
             nextState.active !== this.state.active ||
             nextState.dropdownActive !== this.state.dropdownActive ||
+            nextState.accountsListDropdownActive !== this.state.accountsListDropdownActive ||
             nextProps.height !== this.props.height
         );
     }
@@ -139,8 +145,21 @@ class Header extends React.Component {
         this._closeDropdown();
     }
 
+    _closeAccountsListDropdown() {
+        this.setState({
+            accountsListDropdownActive: false
+        });
+    }
+
+    _closeMenuDropdown() {
+        this.setState({
+            dropdownActive: false,
+        });
+    }
+
     _closeDropdown() {
-        this.setState({dropdownActive: false});
+        this._closeMenuDropdown();
+        this._closeAccountsListDropdown();
     }
 
     _onGoBack(e) {
@@ -181,19 +200,46 @@ class Header extends React.Component {
     //     this.context.router.push(`/account/${account}/overview`);
     // }
 
+    _toggleAccountDropdownMenu() {
+
+        // prevent state toggling if user cannot have multiple accounts
+
+        const hasLocalWallet = !!WalletDb.getWallet();
+
+        if (!hasLocalWallet)
+            return false;
+
+        this.setState({
+            accountsListDropdownActive: !this.state.accountsListDropdownActive
+        });
+    }
+
+    _toggleDropdownMenu() {
+        this.setState({
+            dropdownActive: !this.state.dropdownActive
+        });
+    }
+
     onBodyClick(e) {
         let el = e.target;
-        let insideDropdown = false;
+        let insideMenuDropdown = false;
+        let insideAccountDropdown = false;
 
         do {
-            if(el.classList && el.classList.contains("dropdown-wrapper")) {
-                insideDropdown = true;
+            if(el.classList && el.classList.contains("account-dropdown-wrapper")) {
+                insideAccountDropdown = true;
+                break;
+            }
+
+            if(el.classList && el.classList.contains("menu-dropdown-wrapper")) {
+                insideMenuDropdown = true;
                 break;
             }
 
         } while ((el = el.parentNode));
 
-        if(!insideDropdown) this._closeDropdown();
+        if(!insideAccountDropdown) this._closeAccountsListDropdown();
+        if(!insideMenuDropdown) this._closeMenuDropdown();
     }
 
     _onLinkAccount() {
@@ -212,7 +258,7 @@ class Header extends React.Component {
         let maxHeight = Math.max(40, height - 67 - 36) + "px";
 
         const a = ChainStore.getAccount(currentAccount);
-        const isMyAccount = !a ? false : AccountStore.isMyAccount(a);
+        const isMyAccount = !a ? false : (AccountStore.isMyAccount(a) || (passwordLogin && currentAccount === passwordAccount));
         const isContact = this.props.linkedAccounts.has(currentAccount);
         const enableDepositWithdraw = Apis.instance().chain_id.substr(0, 8) === "4018d784" && isMyAccount;
 
@@ -234,13 +280,13 @@ class Header extends React.Component {
         let myAccountCount = myAccounts.length;
 
         let walletBalance = myAccounts.length && this.props.currentAccount ? (
-                            <div className="total-value" >
-                                <TotalBalanceValue.AccountWrapper
-                                    accounts={[this.props.currentAccount]}
-                                    noTip
-                                    style={{minHeight: 15}}
-                                />
-                            </div>) : null;
+            <div className="total-value" >
+                <TotalBalanceValue.AccountWrapper
+                    accounts={[this.props.currentAccount]}
+                    noTip
+                    style={{minHeight: 15}}
+                />
+            </div>) : null;
 
         let dashboard = (
             <a
@@ -283,9 +329,10 @@ class Header extends React.Component {
             if (tradingAccounts.length >= 1) {
                 accountsList = tradingAccounts
                 .sort()
+                .filter((name) => name !== currentAccount)
                 .map((name) => {
                     return (
-                        <li className={cnames({active: active.replace("/account/", "").indexOf(name) === 0})} onClick={this._accountClickHandler.bind(this, name)} key={name}>
+                        <li key={name} className={cnames({active: active.replace("/account/", "").indexOf(name) === 0})} onClick={this._accountClickHandler.bind(this, name)}>
                             <div style={{paddingTop: 0}} className="table-cell"><AccountImage style={{position: "relative", top: 4}} size={{height: 20, width: 20}} account={name}/></div>
                             <div className="table-cell" style={{paddingLeft: 10}}><a className={"lower-case" + (name === account_display_name ? " current-account" : "")}>{name}</a></div>
                         </li>
@@ -450,17 +497,16 @@ class Header extends React.Component {
                         </div>
                     </div>
                 </div>
-                {/* Send modal */}
-                <SendModal id="send_modal_header" ref="send_modal" from_name={currentAccount} />
-                {/* Deposit modal */}
+                <SendModal id="send_modal_header"
+                    ref="send_modal"
+                    from_name={currentAccount} />
+
                 <DepositModal
                     ref="deposit_modal_new"
                     modalId="deposit_modal_new"
                     account={currentAccount}
-                    backedCoins={this.props.backedCoins}
-                />
+                    backedCoins={this.props.backedCoins} />
             </div>
-
         );
 
     }
@@ -476,6 +522,7 @@ export default connect(Header, {
             backedCoins: GatewayStore.getState().backedCoins,
             linkedAccounts: AccountStore.getState().linkedAccounts,
             currentAccount: AccountStore.getState().currentAccount || AccountStore.getState().passwordAccount,
+            passwordAccount: AccountStore.getState().passwordAccount,
             locked: WalletUnlockStore.getState().locked,
             current_wallet: WalletManagerStore.getState().current_wallet,
             lastMarket: SettingsStore.getState().viewSettings.get(`lastMarket${chainID ? ("_" + chainID.substr(0, 8)) : ""}`),
